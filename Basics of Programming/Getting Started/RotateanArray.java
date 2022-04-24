@@ -25,6 +25,12 @@ public class Main{
 }
 public static void rotate(int[] a, int k)
 {
+    k=k%a.length;
+
+    if(k<0)
+    {
+        k=k+a.length;
+    }
 // part 1
 reverse(a, 0, a.length - k - 1);
 // part 2
