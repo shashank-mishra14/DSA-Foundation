@@ -1,3 +1,5 @@
+package TimeandSpace;
+
 import java.io.*;
 import java.util.*;
 
