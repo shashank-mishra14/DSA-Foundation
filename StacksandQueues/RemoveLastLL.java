@@ -118,6 +118,24 @@ public class Main {
         size++;
       }
     }
+
+    public void removeLast(){
+      // write your code here
+            if (size == 0) {
+        System.out.println("List is empty");
+      } else if (size == 1) {
+        head = tail = null;
+        size = 0;
+      } else {
+        Node temp = head;
+        for(int i=0; i< size-2;i++){
+            temp = temp.next;
+        }
+        tail=temp;
+        temp.next=null;
+        size--;
+      }
+    }
   }
 
   public static void main(String[] args) throws Exception {
@@ -158,10 +176,10 @@ public class Main {
         int idx = Integer.parseInt(str.split(" ")[1]);
         int val = Integer.parseInt(str.split(" ")[2]);
         list.addAt(idx, val);
+      } else if (str.startsWith("removeLast")) {
+        list.removeLast();
       } 
       str = br.readLine();
     }
   }
 }
-                        
-                            
