@@ -1,4 +1,4 @@
-import java.io.*;
+public import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -79,20 +79,31 @@ public class Main {
     display(node.right);
   }
 
-  public static Node removeLeaves(Node node){
-    // write your code here
-    
+  public static int height(Node node) {
+    if (node == null) {
+      return -1;
+    }
+
+    int lh = height(node.left);
+    int rh = height(node.right);
+
+    int th = Math.max(lh, rh) + 1;
+    return th;
+  }
+
+  static int tilt = 0;
+  public static int tilt(Node node){
     if(node == null){
-        return null;
-  }
-  if(node.left == null && node.right == null){
-      return null;
-  }
-  
-  node.left = removeLeaves(node.left);
-  node.right = removeLeaves(node.right);
-  
-  return node;
+      return 0;
+    }
+
+    int ls = tilt(node.left);
+    int rs = tilt(node.right);
+    int ts = ls + rs + node.data;
+    
+    tilt += Math.abs(ls - rs);
+
+    return ts;
   }
 
   public static void main(String[] args) throws Exception {
@@ -109,9 +120,12 @@ public class Main {
     }
 
     Node root = construct(arr);
-    root = removeLeaves(root);
-    display(root);
+
+    tilt(root);
+    System.out.println(tilt);
   }
 
 }
-
+                                class Tilt {
+    
+}
