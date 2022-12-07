@@ -79,21 +79,18 @@ public class Main {
     display(node.right);
   }
 
-  public static Node createLeftCloneTree(Node node){
+  public static Node transBackFromLeftClonedTree(Node node){
     // write your code here
     if(node == null){
         return null;
-        
-    }
-    Node lcr = createLeftCloneTree(node.left);
-    Node rcr = createLeftCloneTree(node.right);
-    
-    Node nn = new Node(node.data, lcr, null);
-    node.left = nn;
-    node.right = rcr;
-    return node;
   }
-
+  
+    node.left = transBackFromLeftClonedTree(node.left.left);
+    node.right = transBackFromLeftClonedTree(node.right);
+    
+    return node;
+    
+  }
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int n = Integer.parseInt(br.readLine());
@@ -108,10 +105,10 @@ public class Main {
     }
 
     Node root = construct(arr);
-    root = createLeftCloneTree(root);
+    root = transBackFromLeftClonedTree(root);
     display(root);
   }
 
-}aclass TranformLeftCloned {
+}class BackToNormal {
     
 }
